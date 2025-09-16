@@ -33,9 +33,13 @@ exports.handler = async (event) => {
       mode: "payment",
       payment_method_types: ["card"],
       line_items: [{ price: priceId, quantity: 1 }],
-      customer_creation: "always", // ensure a Customer object is created
-      customer_update: { name: "auto" }, // auto-captures name field
+      customer_creation: "always",
       custom_fields: [
+        {
+          key: "full_name",
+          label: { type: "custom", custom: "Full Name" },
+          type: "text"
+        },
         {
           key: "website_url",
           label: { type: "custom", custom: "Website URL" },
